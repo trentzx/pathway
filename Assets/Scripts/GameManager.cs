@@ -4,7 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public Ghost[] ghosts;
 
-    public Pacman Pacman;
+    public Pacman pacman;
 
     public Transform pellets;
 
@@ -27,8 +27,9 @@ public class GameManager : MonoBehaviour
 
     private void NewRound()
     {
-        foreach (Transform pellet in this.pellets) {
-            pellet.gameObject.SetActive(true);  
+        foreach (Transform pellet in this.pellets)
+        {
+            pellet.gameObject.SetActive(true);
         }
 
         ResetState();
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
             this.ghosts[i].gameObject.SetActive(true);
         }
 
-        this.Pacman.gameObject.SetActive(true);
+        this.pacman.gameObject.SetActive(true);
     }
 
     private void GameOver()
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour
             this.ghosts[i].gameObject.SetActive(false);
         }
 
-        this.Pacman.gameObject.SetActive(false);
+        this.pacman.gameObject.SetActive(false);
     }
     private void SetScore(int score)
     {
@@ -60,7 +61,7 @@ public class GameManager : MonoBehaviour
 
     private void SetLives(int lives)
     {
-        this.lives = lives;             
+        this.lives = lives;
     }
 
     public void GhostEaten(Ghost ghost)
@@ -68,17 +69,20 @@ public class GameManager : MonoBehaviour
         SetScore(this.score + ghost.points);
     }
 
-    public void PacmanEaten()
+    public void pacmanEaten()
     {
-        this.Pacman.gameObject.setActive(false);
+        this.pacman.gameObject.setActive(false);
 
         SetLives(this.lives - 1);
 
-        if (this.lives > 0) {
+        if (this.lives > 0)
+        {
             Invoke(nameof(ResetState), 3.0f);
-        } else {
+        }
+        else
+        {
             GameOver();
         }
-        
+
     }
 }
