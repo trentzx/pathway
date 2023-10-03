@@ -4,13 +4,12 @@ public class GameManager : MonoBehaviour
 {
     public Ghost[] ghosts;
 
+    // Assuming Pacman is in the same namespace as GameManager
     public Pacman pacman;
 
     public Transform pellets;
 
-
     public int score { get; private set; }
-
     public int lives { get; private set; }
 
     private void Start()
@@ -25,9 +24,17 @@ public class GameManager : MonoBehaviour
         NewRound();
     }
 
+    private void Update()
+    {
+        if (this.lives <= 0 && Input.anyKeyDown)
+        {
+            NewGame();
+        }
+    }
+
     private void NewRound()
     {
-        foreach (Transform pellet in this.pellets)
+        foreach (Transform pellet in pellets)
         {
             pellet.gameObject.SetActive(true);
         }
@@ -37,23 +44,24 @@ public class GameManager : MonoBehaviour
 
     private void ResetState()
     {
-        for (int i = 0; i < this.ghosts.Length; i++)
+        foreach (Ghost ghost in ghosts)
         {
-            this.ghosts[i].gameObject.SetActive(true);
+            ghost.gameObject.SetActive(true);
         }
 
-        this.pacman.gameObject.SetActive(true);
+        pacman.gameObject.SetActive(true); // Assuming pacman is a public field of type Pacman
     }
 
     private void GameOver()
     {
-        for (int i = 0; i < this.ghosts.Length; i++)
+        foreach (Ghost ghost in ghosts)
         {
-            this.ghosts[i].gameObject.SetActive(false);
+            ghost.gameObject.SetActive(false);
         }
 
-        this.pacman.gameObject.SetActive(false);
+        pacman.gameObject.SetActive(false);
     }
+
     private void SetScore(int score)
     {
         this.score = score;
@@ -69,13 +77,13 @@ public class GameManager : MonoBehaviour
         SetScore(this.score + ghost.points);
     }
 
-    public void pacmanEaten()
+    public void PacmanEaten() // Fix the method name to match the capitalization
     {
-        this.pacman.gameObject.setActive(false);
+        pacman.gameObject.SetActive(false);
 
-        SetLives(this.lives - 1);
+        SetLives(lives - 1);
 
-        if (this.lives > 0)
+        if (lives > 0)
         {
             Invoke(nameof(ResetState), 3.0f);
         }
@@ -83,6 +91,5 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
-
     }
 }
