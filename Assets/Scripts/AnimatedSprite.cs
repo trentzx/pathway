@@ -15,11 +15,16 @@ public class AnimatedSprite : MonoBehaviour
 
     private void Start()
     {
-        invokeRepeating(nameof(Advance), this.animationTime, this.animationTime);
+        InvokeRepeating(nameof(Advance), this.animationTime, this.animationTime);
     }
 
     private void Advance()
     {
+        if(!this.spriteRenderer.enabled)
+        {
+            return;
+        }
+
         this.animationFrame++;
 
         if (this.animationFrame >= this.sprites.Length && this.loop)
@@ -30,4 +35,12 @@ public class AnimatedSprite : MonoBehaviour
             this.spriteRenderer.sprite = this.sprites[this.animationFrame];
         }
     }
+
+    public void Restart()
+    {
+        this.animationFrame = -1;
+
+        Advance();
+    }
+
 }
