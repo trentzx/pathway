@@ -1,12 +1,12 @@
 
 using UnityEngine;
 
-<<<<<<< Updated upstream
+
 [RequireComponent (typeof(Rigidbody2D))]
 public class Movement : MonoBehaviour
 {
 
-        public float speed = 8.0;
+        public float speed = 8.0f;
 
     public float speedMultiplier = 1f;
 
@@ -14,7 +14,7 @@ public class Movement : MonoBehaviour
 
     public LayerMask obstaclelayer;
 
-    public new Rigidbody2D rigidbody { get:private set; }
+    public new Rigidbody2D rigidbody { get; private set; }
 
     public Vector2 direction {  get; private set; }
 
@@ -26,39 +26,12 @@ public class Movement : MonoBehaviour
     {
     this.rigidbody = GetComponent<Rigidbody2D>();
     this.startingPosition = transform.position;
-=======
-[RequireComponent(typeof(Rigidbody2D))]
-public class Movement : MonoBehaviour
-{
 
-    public float speed = 8.0f;
-
-    public float speedMultiplier = 1.0f;
-
-    public Vector2 initialDirection;
-    public LayerMask obstacleLayer;
-    public new Rigidbody2D rigidbody { get; private set; }
-    public Vector2 direction { get; private set; }
-    public Vector2 nextDirection { get; private set; }
-    public Vector3 startingPosition {  get; private set; }
-
-    private void Awake()
-    {
-        this.rigidbody = GetComponent<Rigidbody2D>();
-        this.startingPosition = this.transform.position;
->>>>>>> Stashed changes
-    }
-
-    private void Start()
-    {
-<<<<<<< Updated upstream
-
-    }
 
     public void ResetState()
     {
        
-=======
+
         ResetState();  
     }
     public void ResetState()
@@ -71,6 +44,12 @@ public class Movement : MonoBehaviour
         this.enabled = true;
     }
 
+    private void Update()
+    {
+        if(this.nextDirection != Vector2.zero) {
+        SetDirection(this.nextDirection);
+    }
+
 
     private void FixedUpdate()
     {
@@ -79,9 +58,9 @@ public class Movement : MonoBehaviour
         this.rigidbody.MovePosition(position + translation);
     }
 
-    public void SetDirection(Vector2 direction, bool)
+    public void SetDirection(Vector2 direction, bool forced = false)
     {
-        if(!Occupied(direction))
+        if(forced || !Occupied(direction))
         {
             this.direction = direction;
             this.nextDirection = Vector2.zero;
@@ -96,7 +75,7 @@ public class Movement : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.BoxCast(this.transform.position, Vector2.one * 0.75f, 0.0f, direction, 1.5f, this.obstacleLayer);
         return hit.collider != null;
->>>>>>> Stashed changes
+
     }
 
 }
