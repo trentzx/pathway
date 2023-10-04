@@ -26,6 +26,23 @@ public class Ghost : MonoBehaviour
     }
     public void ResetState()
     {
+        this.gameObject.SetActive(true);
+        this.movement.reState();
 
-    }
+        this.frightened.Disable();
+        this.chase.Disable();
+        this.scatter.Enable();
+        
+        if(this.home != this.initialBehaviour) {
+           this.home.Disable();
+          }
+        if(this.initialBehaviour != null) {
+            this.initialBehaviour.Enable();
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+         if (collision.gameObject.layer == LayerMask.NameToLayer("pacman"))
+        }
+
 }
