@@ -79,7 +79,7 @@ public class Movement : MonoBehaviour
         this.rigidbody.MovePosition(position + translation);
     }
 
-    public void SetDirection(Vector2 direction)
+    public void SetDirection(Vector2 direction, bool)
     {
         if(!Occupied(direction))
         {
