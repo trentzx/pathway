@@ -17,7 +17,7 @@ public class Ghost : MonoBehaviour
         this.home = GetComponent<GhostHome>();
         this.scatter = GetComponent<GhostScatter>();
         this.chase = GetComponent<GhostChase>();
-        this.hfrightened = GetComponent<GhostFrightened>();
+        this.frightened = GetComponent<GhostFrightened>();
     }
 
     private void Start()
@@ -42,7 +42,15 @@ public class Ghost : MonoBehaviour
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-         if (collision.gameObject.layer == LayerMask.NameToLayer("pacman"))
+            if (collision.gameObject.layer == LayerMask.NameToLayer("pacman"))
+            {
+                if (this.frightened.enabled)
+                    FindObjectOfType<GameMangaer>().GhostEaten(this);
+                }
+                else {
+                FindObjectOfType<Gamemanager>().PacmanEaten();                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+                }
+            }
         }
 
 }
