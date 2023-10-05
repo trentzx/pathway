@@ -11,6 +11,7 @@ public class Ghost : MonoBehaviour
     public Transform target;
     public int points = 200;
 
+
     private void Awake()
     {
         this.movement = GetComponent<movement>();
