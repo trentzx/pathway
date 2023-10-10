@@ -1652,7 +1652,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost_Blinky
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5084325082712994581, guid: 468dcfe413a176c47a3e0c6236a88c78, type: 3}
+    - {fileID: 4166332602483319343, guid: 468dcfe413a176c47a3e0c6236a88c78, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
