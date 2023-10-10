@@ -405,6 +405,10 @@ GameObject:
   - component: {fileID: 6652288528639552123}
   - component: {fileID: 7941379355110951032}
   - component: {fileID: 1255270260908529986}
+  - component: {fileID: -5524579010225739977}
+  - component: {fileID: -2220310410851835280}
+  - component: {fileID: 2818366855758201025}
+  - component: {fileID: 5645586157533372748}
   m_Layer: 7
   m_Name: Ghost_Base
   m_TagString: Untagged
@@ -505,7 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78035cdee12954a4b97c4a68216bd4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 6
   speedMultiplier: 1
   initialDirection: {x: 0, y: 0}
   obstacleLayer:
@@ -526,3 +530,61 @@ MonoBehaviour:
   initialBehavior: {fileID: 0}
   target: {fileID: 0}
   points: 200
+--- !u!114 &-5524579010225739977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8931121501304959589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50512e326c1c3c644b201c7c3fc0a86d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0
+  inside: {fileID: 0}
+  outside: {fileID: 0}
+--- !u!114 &-2220310410851835280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8931121501304959589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245f94175d03dfe418e545ba3eb56c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 7
+--- !u!114 &2818366855758201025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8931121501304959589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad1e73cea9509e4ba2d4f9fb032b45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 20
+--- !u!114 &5645586157533372748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8931121501304959589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e42e9aef6465d49bbb605d2b4d4f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 8
+  body: {fileID: 2455046559924052048}
+  eyes: {fileID: 5031903958084676875}
+  blue: {fileID: 2557538369916673626}
+  white: {fileID: 6096830517294262268}
